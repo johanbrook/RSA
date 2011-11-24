@@ -2,8 +2,8 @@ package rsa;
 
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
+import javax.swing.JOptionPane;
 
 
 public class RSAFrame extends JFrame {
@@ -26,7 +26,20 @@ public class RSAFrame extends JFrame {
 				
 		setLayout(new GridLayout(3, 1));
 		
-		tool = new RSA();
+		String bitLength = JOptionPane.showInputDialog(this, "Please provide a bit length");
+		
+		if(bitLength == null){
+			System.exit(0);
+		}
+		else{
+			try{
+				tool = new RSA(Integer.parseInt(bitLength));
+			}
+			catch(NumberFormatException e){
+				JOptionPane.showMessageDialog(this, "Please provide a legal integer!");
+			}
+		}
+		
 		
 		JLabel pubKey = new JLabel(tool.getPublicKey().toString());
 		

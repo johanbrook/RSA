@@ -14,10 +14,10 @@ public class RSA {
 	private BigInteger publicKey;
 	private BigInteger privateKey;
 	
-	public RSA(){
-		BigInteger p = BigInteger.probablePrime(5, new Random());
-		BigInteger q = BigInteger.probablePrime(5, new Random());
-		BigInteger phi = (p.add(one)).multiply(q.subtract(one));
+	public RSA(int bitLength){
+		BigInteger p = BigInteger.probablePrime(bitLength / 2, new Random());
+		BigInteger q = BigInteger.probablePrime(bitLength / 2, new Random());
+		BigInteger phi = (p.subtract(one)).multiply(q.subtract(one));
 		
 		this.modulus = p.multiply(q);
 		this.publicKey = new BigInteger("65537");
