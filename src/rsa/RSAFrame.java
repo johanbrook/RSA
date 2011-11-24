@@ -68,7 +68,6 @@ public class RSAFrame extends JFrame {
 			
 			if(e.getSource() == encrypt){
 				result = tool.encrypt(input.getText().trim());
-				System.out.println("lol");
 			}else{
 				result = tool.decrypt(input.getText().trim());
 			}
